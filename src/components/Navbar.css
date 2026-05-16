@@ -1,0 +1,87 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(10,10,15,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: padding var(--ease);
+}
+.navbar.scrolled { padding: 0.65rem 3rem; }
+
+.nav-logo {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo .accent { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--ease);
+  position: relative;
+}
+.nav-links a::before {
+  content: '// ';
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--ease);
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--text); }
+.nav-links a:hover::before { opacity: 1; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text2);
+  border-radius: 2px;
+  transition: all var(--ease);
+}
+.nav-toggle span.open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle span.open:nth-child(2) { opacity: 0; }
+.nav-toggle span.open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 1.5rem; }
+  .navbar.scrolled { padding: 0.65rem 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(10,10,15,0.97);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem 1.5rem;
+    gap: 1rem;
+  }
+  .nav-links.open { display: flex; }
+}
