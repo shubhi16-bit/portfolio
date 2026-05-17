@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 
-export function useReveal(threshold = 0.12) {
-  const ref = useRef<any>(null)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function useReveal(threshold = 0.12): any {
+  const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current
+    const el = ref.current as any
     if (!el) return
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -16,10 +16,9 @@ export function useReveal(threshold = 0.12) {
       },
       { threshold }
     )
-
     observer.observe(el)
     return () => observer.disconnect()
   }, [threshold])
 
-  return ref
+  return ref as any
 }
