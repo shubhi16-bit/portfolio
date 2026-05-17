@@ -2,13 +2,6 @@ import { useReveal } from '../hooks/useReveal'
 import { contact } from '../data/data'
 import './Contact.css'
 
-interface ContactItem {
-  icon: string
-  label: string
-  value: string
-  href: string
-}
-
 export default function Contact() {
   const headerRef = useReveal()
   const introRef = useReveal()
@@ -20,33 +13,15 @@ export default function Contact() {
         <div className="section-line" />
       </div>
       <p className="contact-intro reveal" ref={introRef}>
-        Open to internships, collaborations, and learning opportunities. Feel free to reach out!
+        Open to internships, collaborations, and learning opportunities!
       </p>
       <div className="contact-grid">
-        {contact.map((c, i) => (
-          <ContactCard key={i} item={c} />
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function ContactCard({ item: c }: { item: ContactItem }) {
-  const ref = useReveal()
-  const isExternal = c.href.startsWith('http')
-  return (
-    
-      href={c.href}
-      className="contact-item reveal"
-      ref={ref}
-      target={isExternal ? '_blank' : '_self'}
-      rel="noopener noreferrer"
-    >
-      <span className="contact-icon">{c.icon}</span>
-      <div>
-        <div className="contact-label">{c.label}</div>
-        <div className="contact-value">{c.value}</div>
-      </div>
-    </a>
-  )
-}
+        {contact.map((item, i) => (
+          
+            key={i}
+            href={item.href}
+            className="contact-item reveal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className=
