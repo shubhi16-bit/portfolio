@@ -3,8 +3,7 @@ import { projects, type Project } from '../data/data'
 import './Projects.css'
 
 export default function Projects() {
-  const headerRef = useReveal()
-
+  const headerRef = useReveal<HTMLDivElement>()
   return (
     <section id="projects" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -12,18 +11,15 @@ export default function Projects() {
         <h2 className="section-title">Projects</h2>
         <div className="section-line" />
       </div>
-
       <div className="projects-grid">
-        {projects.map((p, i) => (
-          <ProjectCard key={i} project={p} />
-        ))}
+        {projects.map((p, i) => <ProjectCard key={i} project={p} />)}
       </div>
     </section>
   )
 }
 
 function ProjectCard({ project: p }: { project: Project }) {
-  const ref = useReveal()
+  const ref = useReveal<HTMLDivElement>()
   return (
     <div className="project-card reveal" ref={ref}>
       <div className="project-top">

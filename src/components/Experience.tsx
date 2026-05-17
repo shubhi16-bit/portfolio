@@ -3,8 +3,7 @@ import { experience, type Experience } from '../data/data'
 import './Experience.css'
 
 export default function Experience() {
-  const headerRef = useReveal()
-
+  const headerRef = useReveal<HTMLDivElement>()
   return (
     <section id="experience" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -12,18 +11,15 @@ export default function Experience() {
         <h2 className="section-title">Experience</h2>
         <div className="section-line" />
       </div>
-
       <div className="timeline">
-        {experience.map((e, i) => (
-          <TimelineItem key={i} item={e} />
-        ))}
+        {experience.map((e, i) => <TimelineItem key={i} item={e} />)}
       </div>
     </section>
   )
 }
 
 function TimelineItem({ item: e }: { item: Experience }) {
-  const ref = useReveal()
+  const ref = useReveal<HTMLDivElement>()
   return (
     <div className="timeline-item reveal" ref={ref}>
       <div className="timeline-date">{e.date}</div>
