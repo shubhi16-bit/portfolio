@@ -3,7 +3,7 @@ import { experience, type Experience } from '../data/data'
 import './Experience.css'
 
 export default function Experience() {
-  const headerRef = useReveal<HTMLDivElement>()
+  const headerRef = useReveal()
   return (
     <section id="experience" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -19,7 +19,7 @@ export default function Experience() {
 }
 
 function TimelineItem({ item: e }: { item: Experience }) {
-  const ref = useReveal<HTMLDivElement>()
+  const ref = useReveal()
   return (
     <div className="timeline-item reveal" ref={ref}>
       <div className="timeline-date">{e.date}</div>

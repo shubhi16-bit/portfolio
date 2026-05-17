@@ -1,10 +1,17 @@
 import { useReveal } from '../hooks/useReveal'
-import { contact, type ContactItem } from '../data/data'
+import { contact } from '../data/data'
 import './Contact.css'
 
+interface ContactItem {
+  icon: string
+  label: string
+  value: string
+  href: string
+}
+
 export default function Contact() {
-  const headerRef = useReveal<HTMLDivElement>()
-  const introRef  = useReveal<HTMLParagraphElement>()
+  const headerRef = useReveal()
+  const introRef = useReveal()
   return (
     <section id="contact" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -16,20 +23,23 @@ export default function Contact() {
         Open to internships, collaborations, and learning opportunities. Feel free to reach out!
       </p>
       <div className="contact-grid">
-        {contact.map((c, i) => <ContactCard key={i} item={c} />)}
+        {contact.map((c, i) => (
+          <ContactCard key={i} item={c} />
+        ))}
       </div>
     </section>
   )
 }
 
 function ContactCard({ item: c }: { item: ContactItem }) {
-  const ref = useReveal<HTMLAnchorElement>()
+  const ref = useReveal()
+  const isExternal = c.href.startsWith('http')
   return (
     
-      href={c.href}
+      href={c;href}
       className="contact-item reveal"
       ref={ref}
-      target={c.href.startsWith('http') ? '_blank' : '_self'}
+      target={isExternal ? '_blank' : '_self'}
       rel="noopener noreferrer"
     >
       <span className="contact-icon">{c.icon}</span>

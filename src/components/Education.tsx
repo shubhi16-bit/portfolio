@@ -3,7 +3,7 @@ import { education, type Education } from '../data/data'
 import './Education.css'
 
 export default function Education() {
-  const headerRef = useReveal<HTMLDivElement>()
+  const headerRef = useReveal()
   return (
     <section id="education" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -19,7 +19,7 @@ export default function Education() {
 }
 
 function EduCard({ item: e }: { item: Education }) {
-  const ref = useReveal<HTMLDivElement>()
+  const ref = useReveal()
   return (
     <div className="edu-card reveal" ref={ref}>
       <div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
-export function useReveal<T extends HTMLElement>(threshold = 0.12) {
-  const ref = useRef<T>(null)
+export function useReveal(threshold = 0.12) {
+  const ref = useRef<any>(null)
 
   useEffect(() => {
     const el = ref.current

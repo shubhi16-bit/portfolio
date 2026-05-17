@@ -3,7 +3,7 @@ import { projects, type Project } from '../data/data'
 import './Projects.css'
 
 export default function Projects() {
-  const headerRef = useReveal<HTMLDivElement>()
+  const headerRef = useReveal()
   return (
     <section id="projects" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -19,7 +19,7 @@ export default function Projects() {
 }
 
 function ProjectCard({ project: p }: { project: Project }) {
-  const ref = useReveal<HTMLDivElement>()
+  const ref = useReveal()
   return (
     <div className="project-card reveal" ref={ref}>
       <div className="project-top">

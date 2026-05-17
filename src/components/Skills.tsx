@@ -3,7 +3,7 @@ import { skills } from '../data/data'
 import './Skills.css'
 
 export default function Skills() {
-  const headerRef = useReveal<HTMLDivElement>()
+  const headerRef = useReveal()
   return (
     <section id="skills" className="section">
       <div className="section-header reveal" ref={headerRef}>
@@ -19,7 +19,7 @@ export default function Skills() {
 }
 
 function SkillCard({ label, tags }: { label: string; tags: string[] }) {
-  const ref = useReveal<HTMLDivElement>()
+  const ref = useReveal()
   return (
     <div className="skill-group reveal" ref={ref}>
       <div className="skill-group-label">{label}</div>
