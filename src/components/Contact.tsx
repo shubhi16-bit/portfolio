@@ -36,7 +36,7 @@ function ContactCard({ item: c }: { item: ContactItem }) {
   const isExternal = c.href.startsWith('http')
   return (
     
-      href={c;href}
+      href={c.href}
       className="contact-item reveal"
       ref={ref}
       target={isExternal ? '_blank' : '_self'}
